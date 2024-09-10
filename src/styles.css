@@ -1,0 +1,180 @@
+/* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap');
+h3{
+  color: var(--icons);
+}
+
+:root {
+  --body-backgrounscolor: hsla(270, 50%, 40%, 0.4);
+  --sidebar-backgroundcolor: hsl(0, 0%, 97%);
+  --icons: black;
+  --sidebar-hover: hsla(270, 50%, 90%);
+  --button-backgrounscolor: hsla(270, 70%, 58%, 0.4);
+  --button-backgrounscolor2: hsla(270, 55%, 72%, 0.4);
+  --input-feilds: hsla(271, 43%, 77%, 0.4);
+}
+
+.darkmode {
+  --body-backgrounscolor: hsla(270, 50%, 10%);
+  --sidebar-backgroundcolor: rgb(78, 43, 114);
+  --icons: hsl(0, 0%, 83%);
+  --sidebar-hover: hsla(270, 50%, 10%);
+}
+
+body {
+    background-color: var(--body-backgrounscolor);
+    font-family: "SUSE", sans-serif;
+    color: var(--icons);
+  }
+  
+  ::backdrop{
+    
+    background-image: linear-gradient(
+        45deg,
+    hsl(270, 100%, 85%),
+    hsl(270, 37%, 64%),
+    hsl(270, 100%, 56%),
+    hsl(270, 68%, 77%)
+    
+    );
+    opacity: 0.75;
+    
+  }
+ 
+  #hamburger{
+    fill: var(--icons);
+    height: 38px;
+    width: 38px;
+    margin: 10px;
+    cursor: pointer;
+  }
+
+  #hamburger-close{
+    position: relative;
+    top: 0;
+    right: 0;
+    margin: 10px;
+  }
+  #sidebar{
+    
+      width: 0px;
+      height: 100vh;
+      color: var(--icons);
+      background-color: var(--sidebar-backgroundcolor);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 2;
+      overflow: hidden;
+      transition: width 0.5s ease;
+      white-space: nowrap;
+    
+  }
+
+  #sidebar a  {
+    text-decoration: none;
+    color: var(--icons);
+  }
+  .sidebar-item {
+    text-decoration: none;
+    display: flex;
+    padding: 1em;
+    align-items: center;
+    cursor: pointer;
+  }
+  #sidebar svg {
+    fill: var(--icons);
+  }
+  .sidebar-item:hover {
+    background-color: var(--sidebar-hover);
+  }
+  
+  .sidebar-item > div {
+    padding: 0 1em;
+  }
+  
+  .sidebar-item svg {
+    flex-shrink: 0;
+  }
+
+  .createTaskBtn {
+    background: linear-gradient(180deg, var(--button-backgrounscolor) 0, var(--button-backgrounscolor2) 100%);
+    height: 44px;
+    width: 60%;
+    max-width: 250px;
+    min-width: 100px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: var(--icons);
+    border-radius: 8px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+   
+  }
+  
+  .createTaskBtn:hover {
+    background: linear-gradient(180deg, #6b4afc 0, var(--button-backgrounscolor) 100%);
+  }
+  #dark-mode-toggle{
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    fill: var(--icons);
+   cursor: pointer;
+  }
+
+  form {
+    display: grid;
+    color: var(--icons);
+    grid-template-columns: 2fr;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 30px;
+    
+    
+  }
+
+  #dialog {
+    background-color: var(--body-backgrounscolor);
+    color: var(--icons);
+    border: none;
+    border-radius: 10px;
+    box-shadow: var( --body-backgrounscolor) 0 0, 10px 0 10px var( --body-backgrounscolor) ;
+  }
+
+  #closeBtn {
+    min-width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--button-backgrounscolor);
+    border: none;
+    border-radius: 5px;
+    color: var(--icons);
+  }
+
+  form > input {
+    background-color: var(--input-feilds);
+    border: 0.1px solid var(--body-backgrounscolor);
+    border-radius: 7px;
+    padding: 5px;
+
+  }
+
+  form > button {
+    background-color: var(--button-backgrounscolor);
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: var(--icons);
+  }
+
+  #newTaskRow {
+    background-color: var(--button-backgrounscolor);
+  }

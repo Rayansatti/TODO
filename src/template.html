@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            TODO
+        </title>
+    </head>
+    <body>
+        <h1>TODO</h1>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368" id="dark-mode-toggle"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm40-83q119-15 199.5-104.5T800-480q0-123-80.5-212.5T520-797v634Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368" id="hamburger"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+        <div id="sidebar">
+            <a href="" ><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368" id="hamburger-close"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
+            <a href="" class="sidebar-item"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368" id="addtaskicon"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q65 0 123 19t107 53l-58 59q-38-24-81-37.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160q32 0 62-6t58-17l60 61q-41 20-86 31t-94 11Zm280-80v-120H640v-80h120v-120h80v120h120v80H840v120h-80ZM424-296 254-466l56-56 114 114 400-401 56 56-456 457Z"/></svg>
+            <div id="addTask">Add task</div></a>
+            <a href="" class="sidebar-item"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M280-600v-80h560v80H280Zm0 160v-80h560v80H280Zm0 160v-80h560v80H280ZM160-600q-17 0-28.5-11.5T120-640q0-17 11.5-28.5T160-680q17 0 28.5 11.5T200-640q0 17-11.5 28.5T160-600Zm0 160q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520q17 0 28.5 11.5T200-480q0 17-11.5 28.5T160-440Zm0 160q-17 0-28.5-11.5T120-320q0-17 11.5-28.5T160-360q17 0 28.5 11.5T200-320q0 17-11.5 28.5T160-280Z"/></svg>
+            <div id="allTasks">All tasks</div></a>
+            <a href="" class="sidebar-item"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M360-300q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29ZM200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Z"/></svg>
+            <div id="today">Today</div></a>
+            <a href="" class="sidebar-item"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg>
+            <div id="project-sidebar">Projects</div></a>
+        </div>
+        <div id="mainpage">
+            <dialog id="dialog">
+            <button id="closeBtn" >close</button>
+            <p>create task</p>
+            <form id="createtask">
+                <label for="project">Project</label>
+                <input list="projects" name="project" id="project">
+                <datalist id="projects">
+                    <option value="School">School</option>
+                    <option value="Home">Home</option>
+                    <option value="No project">No project</option>
+                </datalist>
+
+                <label for="task-title">Task</label>
+                <input name="tasktitle" type="text" id="task-title">
+
+                <label for="description">Description</label>
+                <input name="description" type="text" id="description">
+
+                <label for="start-time">Start time</label>
+                <input name="starttime" type="datetime-local" id="start-time">
+                
+
+                <label for="finish-time">Finish time</label>
+                <input name="finishtime" type="datetime-local" id="finish-time">
+
+                <label for="prioroty">Prioroty</label>
+                <input name="prioroty" list="prioroties" name="prioroty" id="prioroty">
+                <datalist id="prioroties">
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </datalist>
+
+                <label for="notes">Notes</label>
+                <input type="text" name="notes" id="notes" placeholder="Write your task notes here!">
+
+
+                <button type="submit" value="submit">Create task</button>
+            </form>
+        </dialog>
+        <button class="createTaskBtn">create task</button></div>
+    </body>
+</html>
