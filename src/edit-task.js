@@ -3,8 +3,8 @@ import { deletTaskBtn } from "./complete-task";
 
 //delete task
 
-const deletButton = deletTaskBtn;
+//const deletButton = deletTaskBtn;
 
-export deleteTask = deletButton.addEventListener('click', () => {
+//export deleteTask = deletButton.addEventListener('click', () => {
     
-})
+//})
