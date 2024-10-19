@@ -2,8 +2,7 @@ const dialog = document.querySelector("dialog");
 const showButton = document.querySelector("dialog + button");
 const colseButton = document.querySelector("dialog button");
 
-import { newTaskRow } from "./form";
-import { taskComplete } from "./form";
+
 //opens the dialog
 
 const show = showButton.addEventListener("click", () => {
@@ -21,7 +20,7 @@ const hamburgerClose = document.getElementById("hamburger-close");
 const sidebar = document.getElementById("sidebar");
 const header = document.querySelector("h1");
 const sidebarItem = document.getElementsByClassName("sidebar-item");
-const mainPage = document.getElementById("mainpage");
+export const mainPage = document.getElementById("mainpage");
 
 
 
@@ -94,19 +93,18 @@ darkModeToggle.addEventListener('click', () => {
 
 //new task
 
-const newTask = document.createElement("div");
+export const newTask = document.createElement("div");
 newTask.id = "newtask";
 mainPage.appendChild(newTask);
-newTask.appendChild(newTaskRow);
+
 
 // all tasks
-export const allTasks = document.createElement('div');
-allTasks.id = 'allTasks';
+
 
 const eachTask = document.createElement('div');
 eachTask.id = 'eachTask';
 eachTask.textContent = localStorage.getItem('Task');
 
-eachTask.appendChild(taskComplete);
+
 
 allTasks.appendChild(eachTask);

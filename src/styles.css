@@ -178,3 +178,7 @@ body {
   #newTaskRow {
     background-color: var(--button-backgrounscolor);
   }
+
+  #allTasks{
+    background-color: var(--button-backgrounscolor);
+  }

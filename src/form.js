@@ -1,119 +1,96 @@
-//convert form data to JSON
-localStorage.getItem('theTask');
-localStorage.getItem('Title');
-localStorage.getItem('description');
-localStorage.getItem('project');
-localStorage.getItem('start');
-localStorage.getItem('finish');
-localStorage.getItem('notes');
-localStorage.getItem('prioroty');
+import { mainPage } from "./dom";
+
+// Initialize tasks array from localStorage or create a new one
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
 const Form = document.getElementById("createtask");
-let project ;
-let title ;
-let description ;
-let startT ;
-let finishT ;
-let prioroty ;
-let notes ;
 
-export const newTaskRow = document.createElement('div');
-    newTaskRow.id = "newTaskRow";
+export const allTasks = document.createElement('div');
+allTasks.id = 'allTasks';
+mainPage.appendChild(allTasks);
 
- export const taskComplete = document.createElement('button');
-    taskComplete.id = 'taskComplete';
-    taskComplete.textContent = 'Done'
-    
+let taskCounter = tasks.length; // Counter based on existing tasks
 
- export function formFun(){Form.addEventListener('submit', (e) => {
-    e.preventDefault();
+export function formFun() {
+    Form.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-    const formData = new FormData(Form);
+        const formData = new FormData(Form);
+        const data = Object.fromEntries(formData);
+        const dataSerialized = JSON.stringify(data);
 
+        // Add new task to tasks array
+        tasks.push(data);
+        localStorage.setItem('tasks', JSON.stringify(tasks)); // Save all tasks to localStorage
 
-    
-    const data = Object.fromEntries(formData);
+        createTaskRow(data);
+        taskCounter++; // Increment task counter for unique IDs
+    });
 
+    // Load existing tasks from localStorage
+    tasks.forEach(createTaskRow);
+}
 
-    const dataSerialized = JSON.stringify(data)
+function createTaskRow(data) {
+    const { project, tasktitle, description, starttime, finishtime, prioroty, notes } = data;
 
-    localStorage.setItem('Task', dataSerialized);
-    
+    const newTaskRow = document.createElement('div');
+    newTaskRow.id = `task-${taskCounter}`; // Unique ID for each task
 
-    const dataDeserialized = JSON.parse(localStorage.getItem('Task'));
-
-    project = dataDeserialized.project;
-    title = dataDeserialized.tasktitle;
-    description = dataDeserialized.description;
-    startT = dataDeserialized.starttime;
-    finishT = dataDeserialized.finishtime;
-    prioroty = dataDeserialized.prioroty;
-    notes = dataDeserialized.notes;
-
-    localStorage.setItem('Title', title);
-    localStorage.setItem('description', description);
-    localStorage.setItem('project', project);
-    localStorage.setItem('start', startT);
-    localStorage.setItem('finish', finishT);
-    localStorage.setItem('notes', notes);
-    localStorage.setItem('prioroty',prioroty);
-    
-
-
-
-    console.log(project);
-console.log(title);
-console.log(description);
-console.log(startT);
-console.log(finishT);
-console.log(prioroty);
-console.log(notes);
-
-
-    
-
-    const Title = document.createElement('h3');
-    Title.textContent = localStorage.getItem('Title');
-    Title.id = 'child';
+    const Title = document.createElement("h3");
+    Title.textContent = tasktitle;
     newTaskRow.appendChild(Title);
+
+    const taskCompleteClone = taskComplete.cloneNode(true);
+    taskCompleteClone.id = `taskComplete-${taskCounter}`; // Unique ID
+    newTaskRow.appendChild(taskCompleteClone);
 
     const descriptionF = document.createElement('p');
     descriptionF.textContent = description;
-    descriptionF.id = 'child1';
     newTaskRow.appendChild(descriptionF);
 
     const startTF = document.createElement('p');
-    startTF.textContent = startT;
-    startTF.id = 'child2';
+    startTF.textContent = starttime;
     newTaskRow.appendChild(startTF);
 
     const finishTF = document.createElement('p');
-    finishTF.textContent = finishT;
-    finishTF.id = 'child3';
+    finishTF.textContent = finishtime;
     newTaskRow.appendChild(finishTF);
 
     const priorotyF = document.createElement('p');
     priorotyF.textContent = prioroty;
-    priorotyF.id = 'child4';
     newTaskRow.appendChild(priorotyF);
 
     const notesF = document.createElement('p');
     notesF.textContent = notes;
-    notesF.id = 'child5';
     newTaskRow.appendChild(notesF);
-
 
     const ProjectF = document.createElement('p');
     ProjectF.textContent = project;
-    ProjectF.id = 'child6';
     newTaskRow.appendChild(ProjectF);
 
-    newTaskRow.appendChild(taskComplete);
-
-    
-    
-});
+    allTasks.appendChild(newTaskRow);
 }
 
+export const taskComplete = document.createElement('button');
+taskComplete.id = 'taskComplete';
+taskComplete.textContent = 'Done';
 
+// Event delegation for task completion and deletion
+allTasks.addEventListener('click', (e) => {
+    if (e.target && e.target.matches('[id^="taskComplete-"]')) {
+        const taskId = e.target.id.replace('taskComplete-', ''); // Get task ID
+        const taskRow = document.getElementById(`task-${taskId}`);
 
+        console.log(`Task ${taskId} completed!`);
+
+        // Remove the task from localStorage
+        tasks.splice(taskId, 1); // Remove task from array
+        localStorage.setItem('tasks', JSON.stringify(tasks)); // Update localStorage
+
+        // Remove task row from DOM
+        if (taskRow) {
+            taskRow.remove();
+        }
+    }
+});
